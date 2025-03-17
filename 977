@@ -1,0 +1,44 @@
+Given an integer array nums sorted in non-decreasing order, return an array of the squares of each number sorted in non-decreasing order.
+
+ 
+
+Example 1:
+
+Input: nums = [-4,-1,0,3,10]
+Output: [0,1,9,16,100]
+Explanation: After squaring, the array becomes [16,1,0,9,100].
+After sorting, it becomes [0,1,9,16,100].
+Example 2:
+
+Input: nums = [-7,-3,2,3,11]
+Output: [4,9,9,49,121]
+
+solution:
+
+class Solution
+ {
+    public int[] sortedSquares(int[] nums)
+     {
+       int[] result=new int[nums.length];//taking same length as IP array
+        int left=0;//start
+        int right=nums.length-1;//end
+        int largenum=nums.length-1;//since it is a sorted array
+        while(left<=right)
+        {
+            if(nums[left]*nums[left]>nums[right]*nums[right])//checcks l2 >r*2
+            {
+                result[largenum--]=nums[left]*nums[left];//add largenum ie.l*2 from last
+                left++;
+            }
+            else
+            {
+                result[largenum--]=nums[right]*nums[right];//r*2
+                right--;
+            }
+        
+        }
+            return result;//since we add largenum from last it will be in sorted form
+        
+    
+     }
+}
